@@ -928,19 +928,6 @@ section,
 }
 
 /* Hero Image */
-/* Hero Container */
-.hero {
-  width: 100%;
-  min-height: calc(100vh - 112px);
-  padding: 80px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Hero Image (Responsive) */
 .hero img {
   position: absolute;
   inset: 0;
@@ -951,29 +938,27 @@ section,
   z-index: 1;
 }
 
-/* Responsive Adjustments for Hero Image */
+/* Responsive Adjustments */
 @media (max-width: 1024px) {
-  .hero img {
-    object-fit: contain; /* For medium screens, you can adjust to 'contain' if the image should fit within the container */
+  .hero {
+    padding: 60px 0;
+    min-height: calc(100vh - 100px); /* Adjusts padding and height for tablets and smaller screens */
   }
 }
 
 @media (max-width: 768px) {
-  .hero img {
-    object-fit: cover; /* Keeps the image covering the container, but allows flexibility based on the screen size */
-    object-position: center; /* Ensures the focal point is the center */
+  .hero {
+    padding: 40px 0;
+    min-height: calc(100vh - 80px); /* Further adjustment for smaller devices */
   }
 }
 
 @media (max-width: 480px) {
-  .hero img {
-    object-fit: cover;
-    width: 100%;
-    height: auto; /* Ensures aspect ratio is maintained */
-    object-position: center top; /* Adjust position for mobile views if needed */
+  .hero {
+    padding: 20px 0;
+    min-height: calc(100vh - 60px); /* Compact height for mobile devices */
   }
 }
-
 
 
 .hero .container {
@@ -1313,7 +1298,7 @@ section,
 }
 
 .departments .nav-link.active {
-  color: var(--accent-color);
+  color: #123f00;
   border-color: var(--accent-color);
   background-color: var(--background-color);
 }
@@ -1343,7 +1328,7 @@ section,
   }
 
   .departments .nav-link.active {
-    color: var(--accent-color);
+    color: #123f00;
     background: var(--accent-color);
   }
 }
