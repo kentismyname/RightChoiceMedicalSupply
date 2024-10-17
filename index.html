@@ -29,6 +29,23 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
 </head>
+<style>
+  .responsive-iframe {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; 
+      height: 1950px;
+      overflow: hidden;
+  }
+  .responsive-iframe iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 160%;  
+  }
+</style>
+
 
 <body class="index-page">
 
@@ -82,7 +99,7 @@
                 <li><a href="#">Dropdown 4</a></li>
               </ul>
             </li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#form">Form</a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -897,17 +914,17 @@
     
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <!-- <section id="contact" class="contact section">
 
-      <!-- Section Title -->
+
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
         <p>If you have any questions or need assistance, please don't hesitate to reach out. We're here to help!</p>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
         <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5041.7206498521355!2d-80.16635869824461!3d26.679367541590942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d928e7e4f32b45%3A0x87845ab3c37aa4af!2s7708%20Southern%20Blvd%20%23103%2C%20West%20Palm%20Beach%2C%20FL%2033411%2C%20USA!5e0!3m2!1sen!2sph!4v1728266015414!5m2!1sen!2sph" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div><!-- End Google Maps -->
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -920,7 +937,7 @@
                 <h3>Location</h3>
                 <p>7708 Southern Blvd. Suite 103, West Palm Beach FL 33411</p>
               </div>
-            </div><!-- End Info Item -->
+            </div>
 
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-telephone flex-shrink-0"></i>
@@ -928,7 +945,7 @@
                 <h3>Call Us</h3>
                 <p>+1 (561) 770-1747</p>
               </div>
-            </div><!-- End Info Item -->
+            </div>
 
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
               <i class="bi bi-envelope flex-shrink-0"></i>
@@ -936,7 +953,7 @@
                 <h3>Email Us</h3>
                 <p>info@rightchoicemedicalsupply.com</p>
               </div>
-            </div><!-- End Info Item -->
+            </div>
 
           </div>
 
@@ -970,7 +987,13 @@
 
               </div>
             </form>
-          </div><!-- End Contact Form -->
+          </div> -->
+          <div id="form" class="responsive-iframe">
+            <iframe  src="https://rightchoicemedicalsupply.com/" frameborder="0"></iframe>
+        </div>
+        
+
+
 
         </div>
 
@@ -1075,6 +1098,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
 
 </body>
 
