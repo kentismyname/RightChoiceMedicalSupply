@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Submit Your Information</h2>
-    <form action="http://formbackend.ddns.net/process_form.php" method="POST">
+    <form onsubmit="showAlert(event)">
         <label for="firstname">First Name:</label>
         <input type="text" id="firstname" name="firstname" value="tester" required><br><br>
 
@@ -44,5 +44,31 @@
 
         <input type="submit" value="Submit">
     </form>
+
+    <script>
+      function showAlert(event) {
+        event.preventDefault(); // Prevent the default form submission
+    
+        // Collect the form data
+        const form = event.target;
+        const formData = new FormData(form);
+        
+        fetch('http://formbackend.ddns.net/process_form.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json()) // Handle JSON response
+        .then(data => {
+            if (data.success) {
+                alert("Form submitted successfully!");
+                window.location.href = "https://rightchoicemedicalsupplies.com"; // Redirect to the desired website
+            } else {
+                alert("Error: " + data.message); // Handle error
+            }
+            form.reset(); // Clear the form after submission
+        })
+        .catch(error => console.error('Error:', error)); // Log errors if any
+    }
+    </script>
 </body>
 </html>
