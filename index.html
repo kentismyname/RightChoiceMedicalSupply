@@ -30,6 +30,43 @@
 
 </head>
 <style>
+  body {
+    background-color: #e9f5e9; /* Light green background */
+    padding: 20px;
+    font-family: Arial, sans-serif; /* Set a clean font */
+  }
+  h2 {
+      color: #333; /* Dark text color */
+  }
+  .preferred-braces {
+      background-color: #ffffff; /* White background */
+      border: 1px solid #ced4da; /* Border color */
+      border-radius: 5px; /* Rounded corners */
+      padding: 15px; /* Padding around the section */
+      margin-top: 15px; /* Space above the section */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  .preferred-braces div {
+      margin-bottom: 10px; /* Space between checkboxes */
+  }
+  .preferred-braces label {
+      margin-left: 8px; /* Space between checkbox and label */
+      color: #333; /* Dark text color for labels */
+  }
+  .btn-success {
+      background-color: #4CAF50; /* Green button */
+      border-color: #4CAF50; /* Green border */
+  }
+  .btn-success:hover {
+      background-color: #45a049; /* Darker green on hover */
+      border-color: #39843c; /* Darker border on hover */
+  }
+  input, select, textarea {
+      border-radius: 5px; /* Rounded input fields */
+  }
+  label {
+      font-weight: bold; /* Bold labels */
+  }
   .responsive-iframe {
       position: relative;
       width: 100%; 
@@ -987,10 +1024,136 @@
               </div>
             </form>
           </div> -->
-          <div id="form" class="responsive-iframe">
-            <iframe  src="http://formbackend.ddns.net/form.html" frameborder="0">
-            </iframe>
-
+          <div class="container">
+            <h2 class="text-center">Brace Order Form</h2>
+            <form action="http://formbackend.ddns.net/process_form.php" method="POST">
+                <div class="form-group">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" required autocomplete="off">
+                </div>
+    
+                <div class="form-group">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" required autocomplete="off">
+                </div>
+    
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" class="form-control" id="address" name="address" required autocomplete="off">
+                </div>
+    
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" class="form-control" id="city" name="city" required autocomplete="off">
+                </div>
+    
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" class="form-control" id="state" name="state" required autocomplete="off">
+                </div>
+    
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" required autocomplete="off">
+                </div>
+    
+                <fieldset class="form-group">
+                    <legend>Do you agree to be contacted at this phone number?</legend>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="contact_yes" name="contact_agree" value="yes" required>
+                        <label class="form-check-label" for="contact_yes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="contact_no" name="contact_agree" value="no">
+                        <label class="form-check-label" for="contact_no">No</label>
+                    </div>
+                </fieldset>
+    
+                <div class="form-group">
+                    <label for="birthdate">Birthdate:</label>
+                    <input type="text" class="form-control" id="birthdate" name="birthdate" required autocomplete="off">
+                </div>
+    
+                <div class="form-group">
+                    <label for="member_id">Member ID:</label>
+                    <input type="text" class="form-control" id="member_id" name="member_id" required autocomplete="off">
+                </div>
+    
+                <div class="form-group">
+                    <label for="insurance">Insurance:</label>
+                    <input type="text" class="form-control" id="insurance" name="insurance" required autocomplete="off">
+                </div>
+    
+                <div class="preferred-braces">
+                    <label>Preferred Braces:</label>
+                    <div>
+                        <input type="checkbox" id="back_brace" name="preferred_braces[]" value="Back Brace">
+                        <label for="back_brace">Back Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bilateral_knee_brace" name="preferred_braces[]" value="Bilateral Knee Brace">
+                        <label for="bilateral_knee_brace">Bilateral Knee Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="right_knee_brace" name="preferred_braces[]" value="Right Knee Brace">
+                        <label for="right_knee_brace">Right Knee Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="left_knee_brace" name="preferred_braces[]" value="Left Knee Brace">
+                        <label for="left_knee_brace">Left Knee Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bilateral_ankle_brace" name="preferred_braces[]" value="Bilateral Ankle Brace">
+                        <label for="bilateral_ankle_brace">Bilateral Ankle Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="right_ankle_brace" name="preferred_braces[]" value="Right Ankle Brace">
+                        <label for="right_ankle_brace">Right Ankle Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="left_ankle_brace" name="preferred_braces[]" value="Left Ankle Brace">
+                        <label for="left_ankle_brace">Left Ankle Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bilateral_shoulder_brace" name="preferred_braces[]" value="Bilateral Shoulder Brace">
+                        <label for="bilateral_shoulder_brace">Bilateral Shoulder Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="right_shoulder_brace" name="preferred_braces[]" value="Right Shoulder Brace">
+                        <label for="right_shoulder_brace">Right Shoulder Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="left_shoulder_brace" name="preferred_braces[]" value="Left Shoulder Brace">
+                        <label for="left_shoulder_brace">Left Shoulder Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bilateral_elbow_brace" name="preferred_braces[]" value="Bilateral Elbow Brace">
+                        <label for="bilateral_elbow_brace">Bilateral Elbow Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="right_elbow_brace" name="preferred_braces[]" value="Right Elbow Brace">
+                        <label for="right_elbow_brace">Right Elbow Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="left_elbow_brace" name="preferred_braces[]" value="Left Elbow Brace">
+                        <label for="left_elbow_brace">Left Elbow Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bilateral_wrist_brace" name="preferred_braces[]" value="Bilateral Wrist Brace">
+                        <label for="bilateral_wrist_brace">Bilateral Wrist Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="right_wrist_brace" name="preferred_braces[]" value="Right Wrist Brace">
+                        <label for="right_wrist_brace">Right Wrist Brace</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="left_wrist_brace" name="preferred_braces[]" value="Left Wrist Brace">
+                        <label for="left_wrist_brace">Left Wrist Brace</label>
+                    </div>
+                </div>
+    
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
         </div>
         
 
