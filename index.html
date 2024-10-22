@@ -97,7 +97,7 @@
     .then(data => {
         if (data.success) {
             alert("Form submitted successfully!");
-            window.location.href = "https://rightchoicemedicalsupplies.com"; // Redirect to the desired website
+            window.location.href = "http://rightchoiceformbackend.ddnsking.com/form.html"; // Redirect to the desired website
         } else {
             alert("Error: " + data.message); // Handle error
         }
@@ -1049,7 +1049,7 @@
               </div>
             </form>
           </div> -->
-          <div class="container" id="form">
+          <!-- <div class="container" id="form">
             <h2 class="text-center">Brace Order Form</h2>
             <form onsubmit="showAlert(event)">
                 <div class="form-group">
@@ -1179,6 +1179,9 @@
     
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
+        </div> -->
+        <div class="responsive-iframe">
+          <iframe id="form" src="http://rightchoiceformbackend.ddnsking.com/form.html" frameborder="0"></iframe>
         </div>
         
 
