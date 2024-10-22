@@ -3,72 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Braces Form</title>
+    <title>Form Submission</title>
 </head>
 <body>
-    <!-- <h2>Submit Your Information</h2>
-    <form onsubmit="showAlert(event)">
-        <label for="firstname">First Name:</label>
-        <input type="text" id="firstname" name="firstname" value="tester" required><br><br>
-
-        <label for="lastname">Last Name:</label>
-        <input type="text" id="lastname" name="lastname" value="Doe" required><br><br>
-
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address" value="123 Main St" required><br><br>
-
-        <label for="city">City:</label>
-        <input type="text" id="city" name="city" value="Springfield" required><br><br>
-
-        <label for="state">State:</label>
-        <input type="text" id="state" name="state" value="IL" required><br><br>
-
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" name="phone" value="1234567890" required><br><br>
-
-        <label for="contact_agree">Agree to Contact:</label>
-        <input type="checkbox" id="contact_agree" name="contact_agree" value="yes" checked><br><br>
-
-        <label for="birthdate">Birthdate:</label>
-        <input type="date" id="birthdate" name="birthdate" value="1990-01-01" required><br><br>
-
-        <label for="member_id">Member ID:</label>
-        <input type="text" id="member_id" name="member_id" value="M123456" required><br><br>
-
-        <label for="insurance">Insurance:</label>
-        <input type="text" id="insurance" name="insurance" value="Health Insurance" required><br><br>
-
-        <label for="preferred_braces">Preferred Braces:</label><br>
-        <input type="checkbox" id="back_brace" name="preferred_braces[]" value="Back Brace" checked>
-        <label for="back_brace">Back Brace</label><br><br>
-
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
         <input type="submit" value="Submit">
-    </form> -->
-<iframe src="http://rightchoiceformbackend.ddnsking.com/form.html" frameborder="0"></iframe>
+    </form>
+
     <script>
-      function showAlert(event) {
-        event.preventDefault(); // Prevent the default form submission
-    
-        // Collect the form data
-        const form = event.target;
-        const formData = new FormData(form);
-        
-        fetch('http://rightchoiceformbackend.ddnsking.com/process_form.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json()) // Handle JSON response
-        .then(data => {
-            if (data.success) {
-                alert("Form submitted successfully!");
-                window.location.href = "https://rightchoicemedicalsupplies.com"; // Redirect to the desired website
-            } else {
-                alert("Error: " + data.message); // Handle error
-            }
-            form.reset(); // Clear the form after submission
-        })
-        .catch(error => console.error('Error:', error)); // Log errors if any
-    }
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('https://script.google.com/macros/s/AKfycbzZrFLUZMkG65o9CWDxImwm4cjufAYuGnuZeLK8LYQYY2-L9OKDSKojdPIPLaxfQkGK/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ name: document.getElementById('name').value, email: document.getElementById('email').value })
+            })
+            
+            .then(response => response.json())
+            .then(data => alert('Form submitted successfully!'))
+            .catch(error => console.error('Error:', error));
+        });
     </script>
 </body>
 </html>

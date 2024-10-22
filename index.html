@@ -82,28 +82,39 @@
   }
 </style>
 <script>
-  function showAlert(event) {
-   // event.preventDefault();
+  function submitForm(event) {
+    event.preventDefault();
 
-    // Collect the form data
-    const form = event.target;
+    // Create a FormData object to capture all form fields
+    const form = document.querySelector("form");
     const formData = new FormData(form);
-    
-    fetch('http://rightchoiceformbackend.ddnsking.com/process_form.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json()) // Handle JSON response
+
+    // Fetch user's IP address
+    fetch("https://api.ipify.org?format=json")
+    .then(response => response.json())
     .then(data => {
-        if (data.success) {
+        // Add user's IP address to the form data
+        formData.append("user_ip", data.ip);
+
+        // Send form data to Google Apps Script Web App URL
+        fetch("https://script.google.com/macros/s/AKfycbyn-lcmHBGmHd9-wA0Xz6B6ZDxRoMI6h_P8jbvrmZQT4qJZqss1vi68EwRvBsfdGilV/exec", { // Replace with your Web App URL
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(result => {
             alert("Form submitted successfully!");
-            window.location.href = "http://rightchoiceformbackend.ddnsking.com/form.html"; // Redirect to the desired website
-        } else {
-            alert("Error: " + data.message); // Handle error
-        }
-        form.reset(); // Clear the form after submission
+            form.reset(); // Reset form after successful submission
+        })
+        .catch(error => {
+            alert("Error submitting form. Please try again.");
+            console.error("Error:", error);
+        });
     })
-    .catch(error => console.error('Error:', error)); // Log errors if any
+    .catch(error => {
+        alert("Unable to retrieve your IP address.");
+        console.error("Error:", error);
+    });
 }
 </script>
 
@@ -1049,9 +1060,9 @@
               </div>
             </form>
           </div> -->
-          <!-- <div class="container" id="form">
+          <div class="container" id="form">
             <h2 class="text-center">Brace Order Form</h2>
-            <form onsubmit="showAlert(event)">
+            <form onsubmit="submitForm(event)">
                 <div class="form-group">
                     <label for="firstname">First Name:</label>
                     <input type="text" class="form-control" id="firstname" name="firstname" required autocomplete="off">
@@ -1179,10 +1190,10 @@
     
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
-        </div> -->
-        <div class="responsive-iframe">
-          <iframe id="form" src="http://rightchoiceformbackend.ddnsking.com/form.html" frameborder="0"></iframe>
         </div>
+        <!-- <div class="responsive-iframe">
+          <iframe id="form" src="http://rightchoiceformbackend.ddnsking.com/form.html" frameborder="0"></iframe>
+        </div> -->
         
 
 
