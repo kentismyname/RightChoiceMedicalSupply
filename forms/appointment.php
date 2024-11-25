@@ -1,45 +1,41 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+// Replace with your actual email address
+$receiving_email_address = 'johnkennethdalisay9@gmail.com';
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect form data
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $date = htmlspecialchars($_POST['date']);
+    $meeting_type = htmlspecialchars($_POST['meeting_type']);
+    $lead_type = htmlspecialchars($_POST['lead_type']);
+    $message = htmlspecialchars($_POST['message']);
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+    // Email subject and body
+    $subject = "New Meeting Request from $name";
+    $email_body = "
+        You have received a new meeting request.\n\n
+        Name: $name\n
+        Email: $email\n
+        Phone: $phone\n
+        Preferred Meeting Date: $date\n
+        Meeting Type: $meeting_type\n
+        Lead Type: $lead_type\n
+        Additional Message: $message\n
+    ";
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = 'Online Appointment Form';
+    // Email headers
+    $headers = "From: $email\r\n";
+    $headers .= "Reply-To: $email\r\n";
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
-
-  $contact->add_message( $_POST['name'], 'Name');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['phone'], 'Phone');
-  $contact->add_message( $_POST['date'], 'Appointment Date');
-  $contact->add_message( $_POST['department'], 'Department');
-  $contact->add_message( $_POST['doctor'], 'Doctor');
-  $contact->add_message( $_POST['message'], 'Message');
-
-  echo $contact->send();
+    // Send email
+    if (mail($receiving_email_address, $subject, $email_body, $headers)) {
+        echo 'Your meeting request has been sent successfully. Thank you!';
+    } else {
+        echo 'Sorry, there was an error sending your request. Please try again later.';
+    }
+} else {
+    echo 'Invalid request method.';
+}
 ?>
