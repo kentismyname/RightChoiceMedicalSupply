@@ -1238,8 +1238,11 @@ section,
 /*--------------------------------------------------------------
 # Appointment Section
 --------------------------------------------------------------*/
+
+
 .appointment .php-email-form {
   width: 100%;
+  
 }
 
 .appointment .php-email-form .form-group {
