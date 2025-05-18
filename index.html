@@ -660,20 +660,20 @@
     
             // Extract form data
             const formData = {
-                name: form.name.value,
+                first_name: form.fname.value,
+                last_name: form.lname.value,
                 email: form.email.value,
                 phone: form.phone.value,
-                date: form.date.value,
-                consultation_type: form.consultation_type.value,
-                brace_type: form.brace_type.value,
-                message: form.message.value || "No additional information provided.",
+                birthdate: form.birthdate.value,
+                state: form.state.value,
+                brace_type: selectedBraces.join(', '),
             };
     
             // Show loading message
             document.querySelector(".loading").style.display = "block";
     
             // Send data to Google Sheets
-            fetch("https://script.google.com/macros/s/AKfycbzHxdBDv8hxUUmO0VmMygs_7e86uXEevXQneWnBp5zVXLPb5POiXiowLiCAyljX-fg/exec", {
+            fetch("https://script.google.com/macros/s/AKfycbyPOwawaZEaSilQAZ57NjrAMt3-R0HwwvvjzCelauRatkbDHxId-3ShmbMzYHYD2pM/exec", {
                 method: "POST",
                 mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
