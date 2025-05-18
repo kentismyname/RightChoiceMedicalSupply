@@ -1782,3 +1782,8 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+
+.appointment .php-email-form input {
+  height: auto;
+}
